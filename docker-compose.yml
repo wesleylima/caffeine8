@@ -1,0 +1,15 @@
+version: '2'
+services:
+  api:
+    build: api/.
+    volumes:
+      - ./api:/var/www
+    ports:
+      - 8988:8001
+    entrypoint:
+      php artisan serve --port 8001 --host 0.0.0.0
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=cafDevIneig8T
+      - MYSQL_DATABASE=caffeine8
