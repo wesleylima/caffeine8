@@ -45,7 +45,7 @@ Route::post('doses', function (Request $request) {
     $dose->percentage_consumed = $percentageConsumed;
     $dose->save();
     $todayStart = (new \DateTime())->format('Y-m-d 00:00:00');
-    return response()->json(Dose::where('created_at', '>', $todayStart)->get());
+    return response()->json($dose);
 });
 
 Route::delete('doses/{doseId?}', function (Request $request) {

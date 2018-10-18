@@ -10,7 +10,12 @@ const getDrink = (dose, drinks) => {
 
 const drinksBeforeQota = (drink, caffeineToday) => {
 		const remainingInQuota = 500000 - caffeineToday;
-		return Math.trunc(remainingInQuota/drink.caffeineContent.magnitude);
+    const drinksLeft = Math.trunc(remainingInQuota/drink.caffeineContent.magnitude);
+    if (drinksLeft > 0) {
+      return drinksLeft;
+    } else {
+      return 0 ;
+    }
 }
 
 export const getHydratedDoses = createSelector(
@@ -26,6 +31,7 @@ export const getHydratedDoses = createSelector(
             }
           }
         }
+        return undefined;
     });
     return hydrated.filter((dose) => dose );
   }
@@ -54,6 +60,7 @@ export const getHydratedDrinks = createSelector(
             drinksBeforeQota: drinksLeft,
           }
         }
+        return false;
     });
     return hydrated.filter((drink) => drink );
   }

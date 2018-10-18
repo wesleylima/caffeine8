@@ -30,7 +30,7 @@ class NewDose extends React.Component {
       <div>
           <form onSubmit={e => {
             e.preventDefault()
-            dispatch(newDose(this.state.drink));
+            // dispatch(newDose(this.state.drink));
 						dispatch(saveDose(this.state.drink));
           }}>
           <Select

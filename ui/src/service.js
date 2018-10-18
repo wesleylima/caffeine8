@@ -1,9 +1,9 @@
-import axios from 'axios'
+import axios from 'axios';
 
 const apiConfig = {
   // baseURL: process.env.API_URL,
   baseURL: 'http://localhost:8988/',
-}
+};
 
 const apiClient = axios.create(apiConfig);
 
@@ -56,7 +56,13 @@ const dataService = store => next => action => {
         drinkId: action.drinkId,
         percentage: action.percentage,
       };
-      apiClient.post('/doses', dose).then((a) => {
+      apiClient.post('/doses', dose).then((res) => {
+        const data = res.data;
+        next({
+          type: 'NEW_DOSE',
+          id: data.id,
+          ...dose,
+        });
         console.log('success');
       }).catch((e) => {
         console.log(e);
@@ -74,8 +80,8 @@ const dataService = store => next => action => {
       // return something?
     // Don't handle if the action doesn't require and API call
     default:
-      break
+      break;
   }
 }
 
-export default dataService
+export default dataService;

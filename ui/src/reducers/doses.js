@@ -1,5 +1,3 @@
-import drinks from './drinks';
-
 const doses = (state = [], action) => {
   switch (action.type) {
     case 'NEW_DOSE':
