@@ -12,9 +12,6 @@ const doses = (state = [], action) => {
       ];
     case 'REMOVE_DOSE':
       return state.filter(comment => comment.id !== action.doseId);
-    case 'UPDATE_DOSE':
-      // state.find()
-      break;
     case 'GET_DOSE_DATA_RECEIVED':
       let newState = [];
       action.data.forEach((dose) => {

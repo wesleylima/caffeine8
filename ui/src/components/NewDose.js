@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { newDose, saveDose } from '../actions';
+import { saveDose } from '../actions';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
 
@@ -30,7 +29,6 @@ class NewDose extends React.Component {
       <div>
           <form onSubmit={e => {
             e.preventDefault()
-            // dispatch(newDose(this.state.drink));
 						dispatch(saveDose(this.state.drink));
           }}>
           <Select

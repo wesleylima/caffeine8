@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const apiConfig = {
   // baseURL: process.env.API_URL,
+  // baseURL: 'http://localhost:8988/',
   baseURL: 'http://localhost:8988/',
 };
 

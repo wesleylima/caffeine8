@@ -9,11 +9,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { connect } from 'react-redux'
 import { removeDose, deleteDose } from '../actions';
 
-const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps);
-  return ownProps;
-}
-
 class DeleteDose extends React.Component {
 
   state = {
@@ -64,6 +59,4 @@ class DeleteDose extends React.Component {
 
 
 export default connect(
-	// mapStateToProps,
-	// mapDispatchToProps
 )(DeleteDose)
