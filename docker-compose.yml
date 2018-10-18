@@ -8,6 +8,13 @@ services:
       - 8988:8001
     entrypoint:
       php artisan serve --port 8001 --host 0.0.0.0
+    links:
+      - db:db
+    environment:
+      - DB_HOST=db
+      - DB_DATABASE=caffeine8
+      - DB_USERNAME=root
+      - DB_PASSWORD=cafDevIneig8T
   db:
     image: mysql:5.7
     environment:

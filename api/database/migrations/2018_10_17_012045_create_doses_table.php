@@ -15,8 +15,11 @@ class CreateDosesTable extends Migration
     {
         Schema::create('doses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('percentage_consumed', 3)->default(100)->unsigned();
+            $table->integer('drink_id')->unsigned();
+            $table->integer('percentage_consumed')->default(100)->unsigned();
             $table->timestamps();
+
+            $table->foreign('drink_id')->references('id')->on('drinks');
         });
     }
 

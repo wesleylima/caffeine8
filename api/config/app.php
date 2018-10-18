@@ -154,6 +154,7 @@ return [
         /*
          * Application Service Providers...
          */
+        Grohiro\LaravelCamelCaseJson\CamelCaseJsonResponseServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,

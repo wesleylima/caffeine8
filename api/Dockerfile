@@ -16,12 +16,17 @@ RUN mv /composer.phar /bin/composer && php -r "unlink('composer-setup.php');"
 
 RUN apt-get update --fix-missing
 
+RUN docker-php-ext-install \
+pdo \
+pdo_mysql
+
 #RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 #RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 #RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 RUN apt-get install -y \
 unzip
+
 COPY composer.json /var/www/composer.json
 
 COPY . /var/www

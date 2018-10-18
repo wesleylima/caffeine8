@@ -19,3 +19,8 @@ docker-compose up
 Go to http://localhost:8989 with your browser
 
 ### With Native PHP, MySQL and
+
+
+php artisan migrate
+
+php artisan migrate --seed
