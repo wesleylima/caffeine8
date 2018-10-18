@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const apiConfig = {
   // baseURL: process.env.API_URL,
-  // baseURL: 'http://localhost:8988/',
-  baseURL: 'https://caffeine8api.wesleylima.com/',
+  baseURL: 'http://localhost:8988/',
+  // baseURL: 'https://caffeine8api.wesleylima.com/',
 };
 
 const apiClient = axios.create(apiConfig);
