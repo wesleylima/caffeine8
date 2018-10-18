@@ -1,4 +1,4 @@
-FROM php:7.1-fpm
+FROM php:7.1.3-fpm
 
 WORKDIR /
 
@@ -32,5 +32,7 @@ COPY composer.json /var/www/composer.json
 COPY . /var/www
 
 WORKDIR /var/www
+
+RUN composer install
 
 ENTRYPOINT php artisan serve
