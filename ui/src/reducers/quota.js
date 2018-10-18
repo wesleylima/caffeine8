@@ -1,4 +1,4 @@
-const totals = (state = [], action) => {
+const quota = (state = [], action) => {
   switch (action.type) {
     case 'UPDATE_QUOTA':
       return state.quota = action.quota;
@@ -7,4 +7,4 @@ const totals = (state = [], action) => {
   }
 }
 
-export default totals
+export default quota;

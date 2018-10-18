@@ -24,6 +24,9 @@ Route::post('doses', function (Request $request) {
     }
 
     $dose = new Dose();
+    if (!isset($data['drinkId'])) {
+        return response()->json(["error" => "drinkId not specified"], 400);
+    }
     $dose->drink_id = $data['drinkId'];
     $dose->percentage_consumed = $percentageConsumed;
     $dose->save();

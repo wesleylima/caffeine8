@@ -16,14 +16,16 @@ const mapStateToProps = (state) => {
 
 const DrinkList = ({ drinks }) => (
   <div>
-    <Typography variant="h5" className="title">
+    <Typography variant="title" className="title">
       Drink List
     </Typography>
     <div>
       <List>
-        {drinks.map( drink =>
+        {drinks.map(drink =>
           <ListItem key={drink.id} >
-						{ drink.drinksBeforeQota }
+						<Typography variant="body2">
+							{ drink.drinksBeforeQuota }
+						</Typography>
             <ListItemText
               primary={drink.name}
               secondary={drink.description}

@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -27,7 +29,9 @@ class DeleteDose extends React.Component {
     const { doseId, dispatch } = this.props;
     return (
       <div>
-      <Button onClick={this.handleClickOpen}>Delete Dose</Button>
+        <IconButton aria-label="Delete" onClick={this.handleClickOpen}>
+          <DeleteIcon />
+        </IconButton>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -57,6 +61,5 @@ class DeleteDose extends React.Component {
   }
 }
 
-
 export default connect(
-)(DeleteDose)
+)(DeleteDose);

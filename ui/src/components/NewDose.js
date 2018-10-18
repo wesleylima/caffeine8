@@ -10,7 +10,6 @@ import Button from '@material-ui/core/Button';
 const mapStateToProps = (state) => {
 	return {
 		drinks: state.drinks,
-		loading: state.loading
 	}
 }
 
@@ -45,10 +44,11 @@ class NewDose extends React.Component {
               <MenuItem key={ drink.id } value={ drink.id }>{ drink.name }</MenuItem>
             )}
           </Select>
-          <FormHelperText>Drink</FormHelperText>
-          <Button type="submit">
-            Add Dose
+					<br />
+          <Button type="submit" variant="contained" color="primary" >
+            Log Drink
           </Button>
+
         </form>
       </div>
     )

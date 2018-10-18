@@ -11,16 +11,16 @@ const mapStateToProps = (state) => {
 	return {
 		doses: getHydratedDoses(state),
 		caffeineToday: getCaffeineToday(state),
-		loading: state.loading
+		quota: state.quota,
 	}
 }
 
 class DoseList extends React.Component {
 	render() {
-		const { doses, caffeineToday } = this.props;
+		const { doses, caffeineToday, quota } = this.props;
 		return (
 		  <div>
-		    <Typography variant="h5" className="title">
+		    <Typography variant="title" className="title">
 		      Caffeine Consumed Today
 		    </Typography>
 		    <div>
@@ -36,7 +36,12 @@ class DoseList extends React.Component {
 		          </ListItem>
 		        )}
 		      </List>
-					Total Caffeine Consumed Today: { caffeineToday/1000 } mg
+					<Typography>
+						Caffeine Consumed Today: { caffeineToday/1000 }mg
+					</Typography>
+					<Typography>
+						Quota: { caffeineToday*100/quota }% (of { quota / 1000}mg)
+					</Typography>
 		    </div>
 		  </div>
 		)

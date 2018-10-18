@@ -2,14 +2,14 @@ import { createSelector } from 'reselect';
 
 const getDrinks = state => state.drinks;
 const getDoses = state => state.doses;
-const getTotals = state => state.totals;
+const getQuota = state => state.quota;
 
 const getDrink = (dose, drinks) => {
   return drinks && ('find' in drinks) && dose.drinkId ? drinks.find(v => v.id === dose.drinkId) : null
 };
 
-const drinksBeforeQota = (drink, caffeineToday) => {
-		const remainingInQuota = 500000 - caffeineToday;
+const drinksBeforeQuota = (drink, caffeineToday, quota) => {
+		const remainingInQuota = quota - caffeineToday;
     const drinksLeft = Math.trunc(remainingInQuota/drink.caffeineContent.magnitude);
     if (drinksLeft > 0) {
       return drinksLeft;
@@ -19,8 +19,8 @@ const drinksBeforeQota = (drink, caffeineToday) => {
 }
 
 export const getHydratedDoses = createSelector(
-  [getDrinks, getDoses, getTotals],
-  (drinks, doses, totalsState) => {
+  [getDrinks, getDoses],
+  (drinks, doses) => {
     const hydrated = doses.map((dose) => {
         const drink = getDrink(dose, drinks);
         if (drink) {
@@ -50,14 +50,14 @@ export const getCaffeineToday = createSelector(
 )
 
 export const getHydratedDrinks = createSelector(
-  [getDrinks, getCaffeineToday],
-  (drinks, caffeineToday)  => {
+  [getDrinks, getCaffeineToday, getQuota],
+  (drinks, caffeineToday, quota)  => {
     const hydrated = drinks.map((drink) => {
         if (drink) {
-          const drinksLeft = drinksBeforeQota(drink, caffeineToday);
+          const drinksLeft = drinksBeforeQuota(drink, caffeineToday, quota);
           return {
             ...drink,
-            drinksBeforeQota: drinksLeft,
+            drinksBeforeQuota: drinksLeft,
           }
         }
         return false;
